@@ -58,31 +58,42 @@
 }
 
 .progressbar li.partial {
-  color: #c4c400;
-  font-weight: bold;
+  color: var(--color-text-primary);
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .progressbar li.partial:before {
-  border-color: #ffeeba;
+  color: var(--color-alert-warn-text);
+  background-image: linear-gradient(
+    var(--color-alert-warn-bg),
+    var(--color-alert-warn-bg)
+  );
+  border-color: var(--color-alert-warn-border);
 }
 
 .progressbar li.completed:before {
   content: '\2713' !important;
-  background-color: #d4edda !important;
-  border-color: #55b776;
+  color: #000 !important;
+  background-color: var(--color-checks-donut-success) !important;
+  border-color: var(--color-checks-donut-success);
 }
 
 .progressbar li.completed {
   font-size: 12px !important;
-  color: green;
+  color: var(--color-text-primary);
+  text-transform: capitalize;
 }
 
 .progressbar li.completed + li:after {
-  background-color: #55b776;
+  background-color: var(--color-checks-donut-success);
 }
 
 /** Override GitHub styles **/
+.overflow-visible {
+  overflow: visible !important;
+}
+
 .commit-form .input-block {
   width: 60% !important;
   display: inline-block !important;
@@ -94,6 +105,10 @@
 
 .py-4 {
   z-index: -1;
+}
+
+.toggleBtn {
+  z-index: 999;
 }
 
 /** Icon tooltip styles **/
@@ -113,7 +128,6 @@
   border-radius: 6px;
   padding: 5px;
   font-size: 14px !important;
-  /* Position the tooltip */
   position: absolute;
   z-index: 10;
   bottom: 150%;
@@ -146,17 +160,31 @@
   background: rgba(0, 0, 0, 0.3);
   padding: 5px 12px;
   border-radius: 50px;
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
   color: white;
+}
+
+.closeButton {
+  background: none !important;
+  color: black;
+}
+
+.closeButton:hover {
+  border: 1px solid black;
+}
+
+.label-margin-right {
+  display: inline-block;
+  margin-right: 20px;
 }
 
 /** Success Message Styles **/
 .successRibbon {
   width: 100%;
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
+  color: #000;
+  background-color: var(--color-checks-donut-success);
+  border-color: var(--color-checks-donut-success);
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   height: 50px;
@@ -172,7 +200,7 @@
 
   font-family: BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 2rem;
-  color: #fff;
+  color: var(--color-text-primary);
   text-transform: uppercase;
   text-align: center;
 }
@@ -190,7 +218,7 @@
   width: 100%;
   height: fit-content;
   z-index: 997;
-  display: block;
+  visibility: hidden;
 }
 
 .card-container:hover .front {
@@ -202,7 +230,9 @@
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
-  background-color: #fff;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-canvas);
+  visibility: visible !important;
 }
 
 .hidden {
@@ -223,6 +253,90 @@
   cursor: pointer;
 }
 
+#reposChart,
+#commitsGraph {
+  float: left;
+  border-right: 1px solid #000;
+}
+
+#skillGraph,
+#reposChart {
+  border-bottom: 1px solid #000;
+}
+
+#skillGraph,
+#languagesGraph {
+  float: right;
+}
+
 .hiddenDisplay {
-  display: none;
+  display: none !important;
+}
+
+.UnderlineNav {
+  justify-content: center !important;
+}
+
+/* File accordion styles */
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.accordian-active,
+.accordion:hover {
+  background-color: var(--color-btn-hover-bg);
+  border-color: var(--color-btn-hover-border);
+  transition-duration: 0.1s;
+}
+
+.accordion:after {
+  content: 'Click to show all files \002B';
+  color: #777;
+  font-weight: bold;
+  margin-left: 15px;
+  display: flex;
+}
+
+.active:after {
+  content: 'Click to collapse \2212';
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: var(--color-bg-canvas);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* New Navbar option styles */
+#houseImage {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  margin-right: 6px;
+}
+
+#homePage,
+#codeLink {
+  color: var(--color-underlinenav-text) !important;
+}
+
+.selected {
+  color: var(--color-underlinenav-text-active) !important;
+  border-bottom-color: #f9826c !important;
+}
+
+.repoNavButton {
+  border-bottom-color: none !important;
+  color: var(--color-underlinenav-text) !important;
 }
